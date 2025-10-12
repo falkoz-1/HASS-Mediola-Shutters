@@ -1,0 +1,89 @@
+open_shutter:
+  name: Open shutter
+  description: Open a specific shutter completely
+  target:
+    entity:
+      integration: mediola_shutters
+      domain: cover
+  fields:
+    entity_id:
+      name: Entity
+      description: The shutter cover entity to open
+      required: true
+      selector:
+        entity:
+          integration: mediola_shutters
+          domain: cover
+
+close_shutter:
+  name: Close shutter
+  description: Close a specific shutter completely
+  target:
+    entity:
+      integration: mediola_shutters
+      domain: cover
+  fields:
+    entity_id:
+      name: Entity
+      description: The shutter cover entity to close
+      required: true
+      selector:
+        entity:
+          integration: mediola_shutters
+          domain: cover
+
+stop_shutter:
+  name: Stop shutter
+  description: Stop a moving shutter
+  target:
+    entity:
+      integration: mediola_shutters
+      domain: cover
+  fields:
+    entity_id:
+      name: Entity
+      description: The shutter cover entity to stop
+      required: true
+      selector:
+        entity:
+          integration: mediola_shutters
+          domain: cover
+
+set_shutter_position:
+  name: Set shutter position
+  description: Set a shutter to a specific position
+  target:
+    entity:
+      integration: mediola_shutters
+      domain: cover
+  fields:
+    entity_id:
+      name: Entity
+      description: The shutter cover entity to control
+      required: true
+      selector:
+        entity:
+          integration: mediola_shutters
+          domain: cover
+    position:
+      name: Position
+      description: Position to set (0 = closed, 100 = open)
+      required: true
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+
+open_all_shutters:
+  name: Open all shutters
+  description: Open all shutters connected to the Mediola Gateway
+
+close_all_shutters:
+  name: Close all shutters
+  description: Close all shutters connected to the Mediola Gateway
+
+stop_all_shutters:
+  name: Stop all shutters
+  description: Stop all moving shutters connected to the Mediola Gateway

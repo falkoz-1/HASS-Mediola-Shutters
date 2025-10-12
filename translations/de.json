@@ -1,0 +1,98 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mediola Gateway konfigurieren",
+        "description": "Geben Sie die Verbindungsdaten für Ihr Mediola Gateway ein",
+        "data": {
+          "host": "IP-Adresse",
+          "username": "Benutzername",
+          "password": "Passwort",
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Wie oft das Gateway für Statusaktualisierungen abgefragt wird (5-300 Sekunden, Standard: 15)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Mediola Gateway fehlgeschlagen. Bitte überprüfen Sie die IP-Adresse, den Benutzernamen und das Passwort.",
+      "unknown": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "abort": {
+      "already_configured": "Dieses Mediola Gateway ist bereits konfiguriert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mediola Shutters Optionen",
+        "description": "Konfigurieren Sie das Aktualisierungsintervall für die Gateway-Abfrage",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Wie oft das Gateway für Statusaktualisierungen abgefragt wird (5-300 Sekunden)"
+        }
+      }
+    }
+  },
+  "services": {
+    "open_shutter": {
+      "name": "Rollo öffnen",
+      "description": "Öffnet ein bestimmtes Rollo vollständig",
+      "fields": {
+        "entity_id": {
+          "name": "Entität",
+          "description": "Die Rollo-Entität, die geöffnet werden soll"
+        }
+      }
+    },
+    "close_shutter": {
+      "name": "Rollo schließen",
+      "description": "Schließt ein bestimmtes Rollo vollständig",
+      "fields": {
+        "entity_id": {
+          "name": "Entität",
+          "description": "Die Rollo-Entität, die geschlossen werden soll"
+        }
+      }
+    },
+    "stop_shutter": {
+      "name": "Rollo stoppen",
+      "description": "Stoppt ein bewegtes Rollo",
+      "fields": {
+        "entity_id": {
+          "name": "Entität",
+          "description": "Die Rollo-Entität, die gestoppt werden soll"
+        }
+      }
+    },
+    "set_shutter_position": {
+      "name": "Rollo-Position setzen",
+      "description": "Setzt ein Rollo auf eine bestimmte Position",
+      "fields": {
+        "entity_id": {
+          "name": "Entität",
+          "description": "Die Rollo-Entität, die gesteuert werden soll"
+        },
+        "position": {
+          "name": "Position",
+          "description": "Position in Prozent (0 = geschlossen, 100 = offen)"
+        }
+      }
+    },
+    "open_all_shutters": {
+      "name": "Alle Rollos öffnen",
+      "description": "Öffnet alle Rollos, die am Mediola Gateway angeschlossen sind"
+    },
+    "close_all_shutters": {
+      "name": "Alle Rollos schließen",
+      "description": "Schließt alle Rollos, die am Mediola Gateway angeschlossen sind"
+    },
+    "stop_all_shutters": {
+      "name": "Alle Rollos stoppen",
+      "description": "Stoppt alle bewegten Rollos, die am Mediola Gateway angeschlossen sind"
+    }
+  }
+}

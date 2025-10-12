@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Mediola Gateway",
+        "description": "Enter the connection details for your Mediola Gateway",
+        "data": {
+          "host": "IP Address",
+          "username": "Username",
+          "password": "Password",
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "How often to poll the gateway for status updates (5-300 seconds, default: 15)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Mediola Gateway. Please check the IP address, username and password.",
+      "unknown": "Unexpected error occurred. Please try again."
+    },
+    "abort": {
+      "already_configured": "This Mediola Gateway is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mediola Shutters Options",
+        "description": "Configure the update interval for polling the gateway",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "How often to poll the gateway for status updates (5-300 seconds)"
+        }
+      }
+    }
+  }
+}
