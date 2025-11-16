@@ -47,6 +47,7 @@ class MediolaOpeningSensor(CoordinatorEntity, BinarySensorEntity):
         # Extract shutter information
         self._sid = shutter_data.get("sid")
         self._adr = shutter_data.get("adr")
+        self._device_type = shutter_data.get("type")
         
         # Unique ID for this entity
         self._attr_unique_id = f"{entry.entry_id}_opening_{self._sid}"
@@ -57,11 +58,14 @@ class MediolaOpeningSensor(CoordinatorEntity, BinarySensorEntity):
     @property
     def device_info(self):
         """Return device information about this shutter."""
+        manufacturer = self.coordinator.api.get_manufacturer(self._device_type)
+        model = f"{self._device_type} Shutter"
+        
         return {
             "identifiers": {(DOMAIN, f"{self._entry.entry_id}_{self._sid}")},
             "name": f"Shutter {self._sid}",
-            "manufacturer": "Mediola",
-            "model": "Window Roller",
+            "manufacturer": manufacturer,
+            "model": model,
             "via_device": (DOMAIN, self._entry.entry_id),
         }
 
@@ -74,8 +78,14 @@ class MediolaOpeningSensor(CoordinatorEntity, BinarySensorEntity):
         # Find current shutter data in coordinator
         for shutter in self.coordinator.data:
             if shutter.get("sid") == self._sid:
-                state = shutter.get("state", "010000")
-                position = self.coordinator.api.parse_position_from_state(state)
+                state = shutter.get("state", "")
+                device_type = shutter.get("type")
+                position = self.coordinator.api.parse_position(device_type, state)
+                
+                if position is None:
+                    # If position is unknown (e.g., moving), return None
+                    return None
+                
                 # If position is 0, shutter is fully open (True)
                 # If position is greater than 0, shutter is at least partially closed (False)
                 return position == 0

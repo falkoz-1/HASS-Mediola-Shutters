@@ -138,8 +138,9 @@ async def async_setup_services(hass: HomeAssistant, entry_id: str) -> None:
         for shutter in coordinator.data:
             sid = shutter.get("sid")
             adr = shutter.get("adr")
+            device_type = shutter.get("type")
             await hass.async_add_executor_job(
-                coordinator.api.open_shutter, sid, adr
+                coordinator.api.open_shutter, device_type, sid, adr
             )
         await coordinator.async_request_refresh()
 
@@ -149,8 +150,9 @@ async def async_setup_services(hass: HomeAssistant, entry_id: str) -> None:
         for shutter in coordinator.data:
             sid = shutter.get("sid")
             adr = shutter.get("adr")
+            device_type = shutter.get("type")
             await hass.async_add_executor_job(
-                coordinator.api.close_shutter, sid, adr
+                coordinator.api.close_shutter, device_type, sid, adr
             )
         await coordinator.async_request_refresh()
 
@@ -160,8 +162,9 @@ async def async_setup_services(hass: HomeAssistant, entry_id: str) -> None:
         for shutter in coordinator.data:
             sid = shutter.get("sid")
             adr = shutter.get("adr")
+            device_type = shutter.get("type")
             await hass.async_add_executor_job(
-                coordinator.api.stop_shutter, sid, adr
+                coordinator.api.stop_shutter, device_type, sid, adr
             )
         await coordinator.async_request_refresh()
 
