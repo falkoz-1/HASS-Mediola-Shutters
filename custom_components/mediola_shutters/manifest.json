@@ -1,11 +1,12 @@
+
 {
   "domain": "mediola_shutters",
   "name": "Mediola Shutters",
-  "codeowners": ["@falkoz-1"],
+  "codeowners": [],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/falkoz-1/HASS-Mediola-Shutters",
+  "documentation": "https://github.com/yourusername/mediola_shutters",
   "iot_class": "local_polling",
   "requirements": [],
-  "version": "1.1.0b"
+  "version": "1.0.0"
 }
